@@ -1,13 +1,19 @@
 package com.in28minutes.rest.webservices.restwebservices.controller;
 
+import com.in28minutes.rest.webservices.restwebservices.HelloWorldBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
 
-	@GetMapping(value = "/hello_world")
-	public String sayHelloWorld() {
+	@GetMapping(value = "/hello-world")
+	public String helloWorld() {
 		return "Hello World!";
+	}
+
+	@GetMapping(value = "/hello-world-bean")
+	public HelloWorldBean helloWorldBean() {
+		return new HelloWorldBean("Hello World!");
 	}
 }
