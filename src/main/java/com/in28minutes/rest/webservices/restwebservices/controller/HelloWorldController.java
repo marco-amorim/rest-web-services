@@ -1,6 +1,6 @@
 package com.in28minutes.rest.webservices.restwebservices.controller;
 
-import com.in28minutes.rest.webservices.restwebservices.HelloWorldBean;
+import com.in28minutes.rest.webservices.restwebservices.model.HelloWorldBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

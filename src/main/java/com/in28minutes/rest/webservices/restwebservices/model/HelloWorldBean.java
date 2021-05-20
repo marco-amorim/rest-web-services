@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restwebservices;
+package com.in28minutes.rest.webservices.restwebservices.model;
 
 public class HelloWorldBean {
 	private String message;
