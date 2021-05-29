@@ -5,6 +5,7 @@ import java.util.List;
 import com.in28minutes.rest.webservices.restwebservices.dao.UserDaoService;
 import com.in28minutes.rest.webservices.restwebservices.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,19 +20,23 @@ public class UserController {
 	UserDaoService userDaoService;
 
 	@GetMapping("/users")
-	public List<User> getAllUsers() {
-		return userDaoService.findAll();
+	public ResponseEntity<List<User>> getAllUsers() {
+		List<User> users = userDaoService.findAll();
+
+		return ResponseEntity.status(HttpStatus.OK).body(users);
 	}
 
 	@GetMapping("/users/{id}")
-	public User getUserById(@PathVariable int id) {
-		return userDaoService.finOne(id);
+	public ResponseEntity<User> getUserById(@PathVariable int id) {
+		User user = userDaoService.finOne(id);
+
+		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 
 	@PostMapping("/users")
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 
-		return ResponseEntity.status(201).body(savedUser);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
 	}
 }
