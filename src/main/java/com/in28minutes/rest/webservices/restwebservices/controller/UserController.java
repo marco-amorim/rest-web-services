@@ -3,6 +3,8 @@ package com.in28minutes.rest.webservices.restwebservices.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.in28minutes.rest.webservices.restwebservices.dao.UserDaoService;
 import com.in28minutes.rest.webservices.restwebservices.exception.UserNotFoundException;
 import com.in28minutes.rest.webservices.restwebservices.model.User;
@@ -42,7 +44,7 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public ResponseEntity<Object> createUser(@RequestBody User user) {
+	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 		URI location = ServletUriComponentsBuilder
 			.fromCurrentRequest().path("/{id}")
