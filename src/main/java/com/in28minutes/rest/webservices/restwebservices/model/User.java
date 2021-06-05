@@ -11,7 +11,7 @@ public class User {
 	@Size(min = 2, message = "Name should have at least 2 characters")
 	private String name;
 
-	@Past
+	@Past(message = "Birthdate is invalid")
 	private Date birthDate;
 
 	protected User() {
